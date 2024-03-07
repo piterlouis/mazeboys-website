@@ -1,0 +1,8 @@
+# robots.txt file for MazeBoys
+# WE LOVE MAZES!
+# WE MAKE MAZES!
+
+User-agent: *
+Allow: /
+
+Sitemap: https://mazeboys.com/sitemap-index.xml

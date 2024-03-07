@@ -1,0 +1,19 @@
+---
+interface Props {
+	debug?: boolean;
+}
+
+const { debug=false } = Astro.props;
+---
+
+<section class="bg-mzdark w-full text-mzyellow">
+    <div class="max-w-screen-lg w-full mx-auto p-4 pt-20 justify-between gap-8 items-start">
+        <div>
+            <h1 class="text-4xl font-semibold">Subscribe to our newsletter!</h1>
+            <p class="text-2xl font-extralight pt-5">Get discounts, promotions and stay tuned for all latest news</p>
+        </div>
+        <div class="pt-10">
+            {!debug && <script is:inline async data-uid="74a4114460" src="https://mazeboys.ck.page/74a4114460/index.js"></script>}
+        </div>
+    </div>
+</section>
