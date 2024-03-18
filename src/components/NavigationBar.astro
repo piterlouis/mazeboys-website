@@ -1,27 +1,51 @@
 ---
 interface Props {
 	logo: string;
+  i18n_url?: string;
+  i18n_code?: string;
 }
 
-const { logo } = Astro.props;
+const { logo, i18n_url, i18n_code } = Astro.props;
 ---
 
 <nav class="fixed w-full top-0 start-0 drop-shadow-md bg-stone-100 text-mzdark z-50">
   <div class="max-w-screen-lg flex flex-wrap items-center justify-between mx-auto p-2">
     <img src={logo} class="h-12" alt="MazeBoys Logo" />
-    <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm rounded-lg sm:hidden" aria-controls="navbar-default" aria-expanded="false">
+    <div class="flex align-middle items-center gap-4">
+    { i18n_url && 
+      <a href={i18n_url} class="hover:underline sm:hidden">
+        { (i18n_code == "es") ? 
+            <img alt="Spanish" src="/lang/es.svg" class="h-8 w-8"> : 
+            <img alt="English" src="/lang/en.svg" class="h-8 w-8"> 
+        }
+      </a> 
+    }
+    <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center w-8 h-8 justify-center text-sm sm:hidden" aria-controls="navbar-default" aria-expanded="false">
         <span class="sr-only">Open main menu</span>
-        <span class="text-3xl">&#9776;</span>
+        <!-- span class="text-5xl">&#9776;</span -->
+        <img src="/menu-icon.svg" class="w-8 h-8">
     </button>
+    </div>
     <div class="hidden w-full sm:block sm:w-auto" id="navbar-default">
-      <ul class="font-bold text-xl flex flex-col p-4 sm:p-0 mt-4 rounded-lg sm:flex-row sm:space-x-8 rtl:space-x-reverse sm:mt-0">
+      <ul class="font-bold text-xl flex flex-col items-center p-4 sm:p-0 mt-4 rounded-lg sm:flex-row sm:space-x-8 rtl:space-x-reverse sm:mt-0">
         <li><a href="/" class="block py-2 px-3 rounded-lg hover:bg-stone-200">Home</a></li>
         <li><a href="/about" class="block py-2 px-3 rounded-lg hover:bg-stone-200">About</a></li>
+        <li class="hidden sm:block">
+          { i18n_url && 
+              <a href={i18n_url} class="hover:underline">
+                { (i18n_code == "es") ? 
+                    <img alt="Spanish" src="/lang/es.svg" class="h-8 w-8"> : 
+                    <img alt="English" src="/lang/en.svg" class="h-8 w-8"> 
+                }
+              </a> 
+          }
+        </li>
 {/*
         <li><a href="news.html"  class="block py-2 px-3 rounded-lg hover:bg-stone-200">News</a></li>
         <li><a href="books.html" class="block py-2 px-3 rounded-lg hover:bg-stone-200">Books</a></li>
 */}
       </ul>
+
     </div>
   </div>
 </nav>

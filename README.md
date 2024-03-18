@@ -1,4 +1,4 @@
-# MazeBoys website
+# MazeBoys website [link](https://mazeboys.com)
 
 Project to keep updates the MazeBoys website. Built with [Astro builder](https://astro.build/)
 
